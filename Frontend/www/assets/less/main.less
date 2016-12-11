@@ -1,0 +1,103 @@
+@import "card/card";
+
+//variables
+@mainColor:#5a5a5a;
+@padding:10%;
+@halfpad:@padding*0.5;
+@item-height: 500px;
+
+// functions
+
+
+//initialization
+body{
+  padding-bottom: @halfpad;
+  color: @mainColor;
+}
+
+//Navbar
+.navbar-wrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 20;
+
+  .container {
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+.navbar {
+  padding-right: 15px;
+  padding-left: 15px;
+
+.container {
+  width: auto;
+}
+}
+}
+.navbar-brand {
+  padding-top: 10px;
+}
+
+//Carousel
+#myCarousel {
+  height: @item-height;
+  margin-bottom: @halfpad*0.5;
+}
+.carousel{
+.item {
+  height: @item-height;
+  width:88%;
+  margin-left:6%;
+  background-color: #777;
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    height: @item-height;
+  }
+}
+}
+
+// Responsive CSS
+@media (min-width: 768px) {
+  .navbar-wrapper {
+    margin-top: 20px;
+
+.container {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+  .navbar {
+   padding-right: 0;
+    padding-left: 0;
+    border-radius: 4px;
+  }
+}
+  .carousel-caption p {
+    margin-bottom: 20px;
+    font-size: 21px;
+    line-height: 1.4;
+  }
+  .featurette-heading {
+    font-size: 50px;
+  }
+}
+@media (max-width: 1000px) {
+  .carousel {
+    .item {
+    width: 100%;
+    margin-left: 0;
+  }
+}
+}
+@media (min-width: 992px) {
+  .featurette-heading {
+    margin-top: 120px;
+  }
+}
+
+

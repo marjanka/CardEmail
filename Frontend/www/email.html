@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CardEmail</title>
+
+    <!-- Bootsrap CSS-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+    <!-- LESS основний файл-->
+    <link rel="stylesheet/less" type="text/css" href="assets/less/main.less" />
+    <!-- LESS JavaScript компілятор-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.5.3/less.min.js"></script>
+</head>
+<body style="background-color: #B6B6B4;">
+<!--
+<form action= "../assets/php/post.php" method= "POST">
+
+    <p>Имя: </p><p> <input type= "text" name= "name"> </p>
+
+    <p>E-mail: </p><p> <input type= "text" name= "email"></p>
+
+    <p>Сообщение: </p><p> <textarea rows= "10" cols= "45" name= "message"></textarea></p>
+
+    <input type= "submit" value= "Отправить">
+-->
+
+<form onsubmit="return sendform();" action="<?php echo $FormAction; ?>" id="message" name="message" method="post">
+    <table width="300" cellspacing="5" style="border:solid 1px #999; margin:auto; background-color: #F6F6F6">
+        <tr>
+            <td align="center">Ваше имя
+                <input type="text" name="name" id="name" />
+            </td>
+        </tr>
+        <tr>
+            <td align="center">Ваш email
+                <input type="text" name="mail" id="mail" />
+            </td>
+        </tr>
+        <tr>
+            <td align="center">
+                <textarea name="message" id="message" cols="30" rows="5"></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td align="center">два + два =
+                <input name="q" type="text" id="q" size="3" />
+            </td>
+        </tr>
+        <tr>
+            <td align="center">
+                <input type="submit" name="button" id="button" value="Отправить письмо" />
+                <input name="post" type="hidden" id="post" value="send" />
+            </td>
+        </tr>
+    </table>
+</form>
+
+<?php
+$FormAction = $_SERVER['PHP_SELF'];
+if (isset($_POST['post']) || ($_POST['post'] == 'send')) {
+if (!isset($_POST['q']) or ($_POST['q'] != 4)) {
+echo "<script type="text/javascript"  src="../assets/js/main.js">alert(\"Неверный ответ на контрольный вопрос!\")</script>";}
+else {
+$name = htmlspecialchars(trim($_POST['name']));
+$mail = htmlspecialchars(trim($_POST['mail']));
+$message = htmlspecialchars(trim($_POST['message']));
+$box = "email администратора сайта";
+$subject = "Вопрос с сайта";
+$headers = "Content-type: text/plain; charset=utf-8 \r\n";
+$ret = 0;
+$ret = mail ($box, $subject, $message, $headers);
+if ($ret == 'true') {
+echo "<script type=\"text/javascript\">alert(\"Спасибо, ваше сообщение отправлено.\")</script>";
+}
+else {
+echo "<script type=\"text/javascript\">alert(\"Извините, отправка не удалась. Попробуйте ещё раз.\")</script>";
+}
+}
+}
+?>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+<!-- jQuery JavaScript-->
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"> </script>
+
+<!--Bootsrap JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js" ></script>
+
+<!--Own JavaScript-->
+<script type="text/javascript"  src="assets/js/main.js"> </script>
+</html>

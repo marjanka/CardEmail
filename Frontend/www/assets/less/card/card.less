@@ -1,0 +1,118 @@
+@panel:40%;
+
+//initialization
+.card-container{
+  width: @panel*1.5;
+  height: @item-height*1.2;
+  margin:20px auto;
+  margin-top:95px;
+  background: #fff;
+  padding: 10px;
+  font-size: 20px;
+  color: #666;
+}
+
+.card-preview{
+  width: @panel*1.5;
+  height: @item-height*1.2;
+  margin: 20px auto;
+  background: #fff;
+  padding: 10px;
+  font-size: 20px;
+  color: #666;
+}
+
+.left-panel{
+  padding-left: @halfpad;
+  width: @panel*1.2;
+  height: 100%;
+  float: left;
+
+input{
+  width: 100%;
+  height: 24px;
+  padding: 4px;
+  color: #666;
+  font-size: 16px;
+}
+textarea{
+  width: 100%;
+  height: 180px;
+  padding: 6px;
+  color: #666;
+  font-size: 16px;
+}
+  .preview {
+    margin: 5% 25%;
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+    width:50%;
+    height:7%;
+    background-color: #FF3F94;
+    color: black;
+    box-shadow: 0 0 3px 1px rgba(0,0,0,.35);
+  }
+}
+.right-panel{
+
+  padding-left: @halfpad;
+  width: @panel*1.2;
+  height: 100%;
+  float: left;
+  cursor: default;
+}
+
+#new_img{
+  height: 210px;
+  max-width: 300px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto
+}
+#new_title{
+  font: 40px "Brush Script MT";
+
+}
+#new_text{
+  font: 16px "Lucida Calligraphy";
+
+}
+#new_author{
+  float: right;
+  font: 20px "Lucida Calligraphy";
+
+}
+
+.previewImage{
+  height: 90%;
+  text-align: center;
+}
+
+.download{
+  box-shadow: 0 0 3px 1px rgba(0,0,0,.35);
+}
+
+.send-email{
+  box-shadow: 0 0 3px 1px rgba(0,0,0,.35);
+  position: relative;
+  float: right;
+}
+
+@media (max-width: 1110px){
+  .container{
+    margin: 0;
+    width: 70%;
+    min-width: 550px;
+  }
+  .right-panel{
+    padding-left: 5%;
+    margin-top: 0;
+  }
+  .left-panel{
+    padding: 0;
+  }
+
+}
+
+

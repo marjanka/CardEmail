@@ -1,0 +1,27 @@
+<%
+
+function getIngredientsArray(card) {
+    //Отримує вміст піци
+    var content = card.title;
+    var result = [];
+
+    //Object.keys повертає масив ключів в об’єкті JavaScript
+
+    Object.keys(content).forEach(function(key){
+
+        //a.concat(b) створює спільний масив із масивів a та b
+        result = result.concat(content[key]);
+    });
+
+    return result;
+}
+
+%>
+<div class="col-sm-6 col-md-4 example">
+    <p id="new_title"> <%= getIngredientsArray(card).join(", ") %></p>
+    <p><img id="new_img"  src= <%= card.icon %> </p>
+    <p id="new_text"><%= card.text %></p>
+    <p id="new_author"><%= card.author %></p>
+</div>
+
+
