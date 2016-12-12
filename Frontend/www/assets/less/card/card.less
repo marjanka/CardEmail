@@ -3,7 +3,7 @@
 //initialization
 .choose-image{
   width: @panel*1.8;
-  height: @item-height*1.5;
+  height: @item-height*2;
   margin: 20px auto;
   margin-top:95px;
   background: #fff;
@@ -13,6 +13,7 @@
 }
 .image_for_card {
   border: 1px dotted #D1D0CE;
+  margin-top: 10px;
 }
 .card-types-wrap{
   background: #777;
@@ -24,7 +25,6 @@
     font-size: 16px;
   }
 }
-
 .card-container{
   width: @panel*1.5;
   height: @item-height*1.2;
@@ -79,44 +79,28 @@ textarea{
   }
 }
 .right-panel{
-
   padding-left: @halfpad;
   width: @panel*1.2;
   height: 100%;
   float: left;
   cursor: default;
 }
-
-#new_img{
-  height: 210px;
-  max-width: 300px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto
+#chosen_image_for_card{
+  margin: 2% 32%;
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+  width:30%;
+  height:7%;
+  box-shadow: 0 0 3px 1px rgba(0,0,0,.35);
 }
-#new_title{
-  font: 40px "Brush Script MT";
-
-}
-#new_text{
-  font: 16px "Lucida Calligraphy";
-
-}
-#new_author{
-  float: right;
-  font: 20px "Lucida Calligraphy";
-
-}
-
 .previewImage{
   height: 90%;
   text-align: center;
 }
-
 .download{
   box-shadow: 0 0 3px 1px rgba(0,0,0,.35);
 }
-
 .send-email{
   box-shadow: 0 0 3px 1px rgba(0,0,0,.35);
   position: relative;

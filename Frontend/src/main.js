@@ -4,12 +4,12 @@
 
 $(function(){
     //This code will execute when the page is ready
-    var createCard = require('./pizza/createCard');
+    var showImages = require('./pizza/showImages');
     var examples = require('./pizza/examples');
     var cardList = require('./cardList');
-
+    var createCard = require('./pizza/createCard');
     examples.initialiseMenu();
-    createCard.initialise();
+    showImages.initialise();
 
 
 });

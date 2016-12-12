@@ -1,74 +1,38 @@
 /**
- * Created by Marjana on 12/11/2016.
+ * Created by Marjana on 12/12/2016.
  */
-
 var templates = require('../templates');
-var cardList = require('../cardList');
+var storage = require('./storage');
 
-var $choose_image = $("#choose-image");
-var filter= {
-    birthday: 0,
-    christmas: 1,
-    new_year: 2
+var Card = [];
+var savedCart = storage.get('card');
+
+//HTML едемент куди будуть додаватися піци
+var $card = $(".right-panel");
+
+function creation(card) {
+
+        Card.push({
+            card: card
+        });
+    updateCart();
 }
-function showImagesList(list) {
-    $choose_image.html("");
-    function showOneImage(card) {
-        var html_image = templates.createCard_OneItem({card: card});
-        var $node_image = $(html_image);
-        $choose_image.append($node_image);
+
+function initialiseCard() {
+    updateCart();
+}
+function updateCart() {
+     storage.set('card',Card);
+    $card.html("");
+    function showOnePizzaInCart(cart_item) {
+        var html_code = templates.createCard_ByYourself(cart_item);
+        var $node = $(html_code);
+        $card.append($node);
     }
-    list.forEach(showOneImage);
+    Card.forEach(showOnePizzaInCart);
 }
-
-function filterImages(filter) {
-    var examples_shown = [];
-    cardList.forEach(function(card){
-        if(filter == 0){
-            if(card.title.birthday) {
-                examples_shown.push(card);
-            }}
-        else if(filter == 1){
-            if(card.title.christmas) {
-                examples_shown.push(card);
-            }}
-        else if(filter == 2){
-            if(card.title.new_year) {
-                examples_shown.push(card);
-            }}
-    });
-    showImagesList(examples_shown);
-}
-
-function initialise() {
-    showImagesList(cardList);
-    addFilters();
-}
-
-function addFilters() {
-
-    $("#filter-birthday").click(function (e) {
-        filterImages(filter.birthday);
-
-    });
-    $("#filter-christmas").click(function (e) {
-        filterImages(filter.christmas);
-
-    });
-    $("#filter-new_year").click(function (e) {
-        filterImages(filter.new_year);
-
-    });
-
-    $("#filter-all").click(function (e) {
-        showImagesList(cardList);
-    });
-}
-
-exports.filterImages = filterImages;
-exports.initialise = initialise;
-
-
+exports.creation = creation;
+exports.initialiseCard = initialiseCard;
 
 var element = $(".right-panel"); // global variable
 var getCanvas; // global variable
@@ -94,7 +58,8 @@ $(".preview").on('click', function () {
             getCanvas = canvas;
         }
     });
-    // $(".card-container").hide();
+    $(".card-preview").show();
+
 });
 
 

@@ -1,4 +1,5 @@
 @import "card/card";
+@import "card/examples";
 
 //variables
 @mainColor:#5a5a5a;
@@ -14,7 +15,6 @@ body{
   padding-bottom: @halfpad;
   color: @mainColor;
 }
-
 //Navbar
 .navbar-wrapper {
   position: absolute;
@@ -22,16 +22,13 @@ body{
   right: 0;
   left: 0;
   z-index: 20;
-
   .container {
     padding-right: 0;
     padding-left: 0;
   }
-
 .navbar {
   padding-right: 15px;
   padding-left: 15px;
-
 .container {
   width: auto;
 }
@@ -40,28 +37,26 @@ body{
 .navbar-brand {
   padding-top: 10px;
 }
-
 //Carousel
 #myCarousel {
-  height: @item-height;
+  height: @item-height*0.9;
   margin-bottom: @halfpad*0.5;
 }
 .carousel{
 .item {
-  height: @item-height;
-  width:88%;
-  margin-left:6%;
+  height: @item-height*0.9;
+  width:70%;
+  margin-left:16%;
   background-color: #777;
   img {
     position: absolute;
     top: 0;
     left: 0;
     min-width: 100%;
-    height: @item-height;
+    height: @item-height*0.9;
   }
 }
 }
-
 // Responsive CSS
 @media (min-width: 768px) {
   .navbar-wrapper {
