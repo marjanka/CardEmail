@@ -8,8 +8,8 @@ $(function(){
     var examples = require('./pizza/examples');
     var cardList = require('./cardList');
 
-    //examples.initialiseCart();
-    createCard.initialiseMenu();
+    examples.initialiseMenu();
+    createCard.initialise();
 
 
 });

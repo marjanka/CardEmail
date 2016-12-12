@@ -3,11 +3,72 @@
  */
 
 var templates = require('../templates');
-var examples = require('./examples');
 var cardList = require('../cardList');
 
-//HTML едемент куди будуть додаватися піци
-var $card_list = $(".example");
+var $choose_image = $("#choose-image");
+var filter= {
+    birthday: 0,
+    christmas: 1,
+    new_year: 2
+}
+function showImagesList(list) {
+    $choose_image.html("");
+    function showOneImage(card) {
+        var html_image = templates.createCard_OneItem({card: card});
+        var $node_image = $(html_image);
+        $choose_image.append($node_image);
+    }
+    list.forEach(showOneImage);
+}
+
+function filterImages(filter) {
+    var examples_shown = [];
+    cardList.forEach(function(card){
+        if(filter == 0){
+            if(card.title.birthday) {
+                examples_shown.push(card);
+            }}
+        else if(filter == 1){
+            if(card.title.christmas) {
+                examples_shown.push(card);
+            }}
+        else if(filter == 2){
+            if(card.title.new_year) {
+                examples_shown.push(card);
+            }}
+    });
+    showImagesList(examples_shown);
+}
+
+function initialise() {
+    showImagesList(cardList);
+    addFilters();
+}
+
+function addFilters() {
+
+    $("#filter-birthday").click(function (e) {
+        filterImages(filter.birthday);
+
+    });
+    $("#filter-christmas").click(function (e) {
+        filterImages(filter.christmas);
+
+    });
+    $("#filter-new_year").click(function (e) {
+        filterImages(filter.new_year);
+
+    });
+
+    $("#filter-all").click(function (e) {
+        showImagesList(cardList);
+    });
+}
+
+exports.filterImages = filterImages;
+exports.initialise = initialise;
+
+
 
 var element = $(".right-panel"); // global variable
 var getCanvas; // global variable
@@ -44,41 +105,3 @@ $(".download").on('click', function () {
     $(".download").attr("download", "greeting_card.jpg").attr("href", newData);
 });
 
-function showCardList(list) {
-    //Очищаємо старі піци в кошику
-    $card_list.html("");
-
-    //Онволення однієї піци
-    function showOneCard(card) {
-        var html_code = templates.examples_OneItem({card: card});
-
-        var $node = $(html_code);
-
-        $card_list.append($node);
-    }
-
-    list.forEach(showOneCard);
-}
-
-function filterCard(filter) {
-    //Масив куди потраплять піци які треба показати
-    var card_shown = [];
-
-    cardList.forEach(function(card){
-        //Якщо піка відповідає фільтру
-        // pizza_shown.push(pizza);
-
-        //TODO: зробити фільтри
-    });
-
-    //Показати відфільтровані піци
-    showCardList(card_shown);
-}
-
-function initialiseMenu() {
-    //Показуємо усі піци
-    showCardList(cardList)
-}
-
-exports.filterCard = filterCard;
-exports.initialiseMenu = initialiseMenu;

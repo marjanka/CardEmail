@@ -90,8 +90,8 @@ $(function(){
     var examples = require('./pizza/examples');
     var cardList = require('./cardList');
 
-    //examples.initialiseCart();
-    createCard.initialiseMenu();
+    examples.initialiseMenu();
+    createCard.initialise();
 
 
 });
@@ -101,11 +101,72 @@ $(function(){
  */
 
 var templates = require('../templates');
-var examples = require('./examples');
 var cardList = require('../cardList');
 
-//HTML едемент куди будуть додаватися піци
-var $card_list = $(".example");
+var $choose_image = $("#choose-image");
+var filter= {
+    birthday: 0,
+    christmas: 1,
+    new_year: 2
+}
+function showImagesList(list) {
+    $choose_image.html("");
+    function showOneImage(card) {
+        var html_image = templates.createCard_OneItem({card: card});
+        var $node_image = $(html_image);
+        $choose_image.append($node_image);
+    }
+    list.forEach(showOneImage);
+}
+
+function filterImages(filter) {
+    var examples_shown = [];
+    cardList.forEach(function(card){
+        if(filter == 0){
+            if(card.title.birthday) {
+                examples_shown.push(card);
+            }}
+        else if(filter == 1){
+            if(card.title.christmas) {
+                examples_shown.push(card);
+            }}
+        else if(filter == 2){
+            if(card.title.new_year) {
+                examples_shown.push(card);
+            }}
+    });
+    showImagesList(examples_shown);
+}
+
+function initialise() {
+    showImagesList(cardList);
+    addFilters();
+}
+
+function addFilters() {
+
+    $("#filter-birthday").click(function (e) {
+        filterImages(filter.birthday);
+
+    });
+    $("#filter-christmas").click(function (e) {
+        filterImages(filter.christmas);
+
+    });
+    $("#filter-new_year").click(function (e) {
+        filterImages(filter.new_year);
+
+    });
+
+    $("#filter-all").click(function (e) {
+        showImagesList(cardList);
+    });
+}
+
+exports.filterImages = filterImages;
+exports.initialise = initialise;
+
+
 
 var element = $(".right-panel"); // global variable
 var getCanvas; // global variable
@@ -142,50 +203,53 @@ $(".download").on('click', function () {
     $(".download").attr("download", "greeting_card.jpg").attr("href", newData);
 });
 
-function showCardList(list) {
-    //Очищаємо старі піци в кошику
-    $card_list.html("");
 
-    //Онволення однієї піци
-    function showOneCard(card) {
-        var html_code = templates.examples_OneItem({card: card});
-
-        var $node = $(html_code);
-
-        $card_list.append($node);
-    }
-
-    list.forEach(showOneCard);
-}
-
-function filterCard(filter) {
-    //Масив куди потраплять піци які треба показати
-    var card_shown = [];
-
-    cardList.forEach(function(card){
-        //Якщо піка відповідає фільтру
-        // pizza_shown.push(pizza);
-
-        //TODO: зробити фільтри
-    });
-
-    //Показати відфільтровані піци
-    showCardList(card_shown);
-}
-
-function initialiseMenu() {
-    //Показуємо усі піци
-    showCardList(cardList)
-}
-
-exports.filterCard = filterCard;
-exports.initialiseMenu = initialiseMenu;
-},{"../cardList":1,"../templates":5,"./examples":4}],4:[function(require,module,exports){
+},{"../cardList":1,"../templates":5}],4:[function(require,module,exports){
 /**
  * Created by Marjana on 12/11/2016.
  */
 
-},{}],5:[function(require,module,exports){
+
+var templates = require('../templates');
+var cardList = require('../cardList');
+
+var $examples_list = $(".example");
+
+function showExamplesList(list) {
+    $examples_list.html("");
+
+
+    function showOneExample(card) {
+        var html_code = templates.examples_OneItem({card: card});
+
+        var $node = $(html_code);
+
+        $examples_list.append($node);
+    }
+
+    list.forEach(showOneExample);
+}
+
+function filterExamples(filter) {
+
+    var card_shown = [];
+
+    cardList.forEach(function(card){
+        // pizza_shown.push(pizza);
+
+    });
+
+
+    showExamplesList(card_shown);
+}
+
+function initialiseMenu() {
+    showExamplesList(cardList)
+}
+
+exports.filterExamples = filterExamples;
+exports.initialiseMenu = initialiseMenu;
+},{"../cardList":1,"../templates":5}],5:[function(require,module,exports){
 /**
  * Created by Marjana on 12/11/2016.
  */
@@ -194,9 +258,9 @@ exports.initialiseMenu = initialiseMenu;
 var ejs = require('ejs');
 
 
-exports.examples_OneItem = ejs.compile("<%\r\n\r\nfunction getIngredientsArray(card) {\r\n    //Отримує вміст піци\r\n    var content = card.title;\r\n    var result = [];\r\n\r\n    //Object.keys повертає масив ключів в об’єкті JavaScript\r\n\r\n    Object.keys(content).forEach(function(key){\r\n\r\n        //a.concat(b) створює спільний масив із масивів a та b\r\n        result = result.concat(content[key]);\r\n    });\r\n\r\n    return result;\r\n}\r\n\r\n%>\r\n<div class=\"col-sm-6 col-md-4 example\">\r\n    <p id=\"new_title\"> <%= getIngredientsArray(card).join(\", \") %></p>\r\n    <p><img id=\"new_img\"  src= <%= card.icon %> </p>\r\n    <p id=\"new_text\"><%= card.text %></p>\r\n    <p id=\"new_author\"><%= card.author %></p>\r\n</div>\r\n\r\n\r\n");
+exports.examples_OneItem = ejs.compile("<%\r\n\r\nfunction getTitlesArray(card) {\r\n    var content = card.title;\r\n    var result = [];\r\n\r\n    //Object.keys повертає масив ключів в об’єкті JavaScript\r\n\r\n    Object.keys(content).forEach(function(key){\r\n\r\n        //a.concat(b) створює спільний масив із масивів a та b\r\n        result = result.concat(content[key]);\r\n    });\r\n\r\n    return result;\r\n}\r\n\r\n%>\r\n<div class=\"col-sm-6 col-md-4 example\">\r\n    <p id=\"new_title\"> <%= getTitlesArray(card).join(\", \") %></p>\r\n    <p><img id=\"new_img\"  src= <%= card.icon %> </p>\r\n    <p id=\"new_text\"><%= card.text %></p>\r\n    <p id=\"new_author\"><%= card.author %></p>\r\n</div>\r\n\r\n\r\n");
 
-exports.createCard_OneItem = ejs.compile("");
+exports.createCard_OneItem = ejs.compile("<div class=\"col-sm-6 col-md-4 image_for_card\">\r\n    <p><img id=\"new_img\" src= <%= card.icon %> </p>\r\n</div>");
 
 },{"ejs":6}],6:[function(require,module,exports){
 /*
