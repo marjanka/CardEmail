@@ -59,23 +59,12 @@
     });
 
     $(".send-email").on('click', function () {
-      //  alert("bla");
+        $(".card-preview").hide();
+        $(".card-container").hide();
+        $("#myform").show();
         var imageData = getCanvas.toDataURL("image/png");
-        console.log(imageData);
-     // $(".send_image").value = imageData;
-       // document.getElementById("send_image").innerHTML = imageData;
-       // if (!getElementById("send_image")){
-       //     alert("loh");
-      //  }
-       // getElementById("send_image").value = imageData;
-       // var bla = getElementById("send_image").value;
-      //  alert("bla");
-    //var element1 = $(".send_image").val();
-    //console.log(element1 );
-    //alert("bla");
-    //var $myform = $(myform);
-       // $myform.find("#send_image").text(imageData);
-       // alert($myform.find("input#send_image").text(imageData));
+      $("input#send_image:text").val(imageData);
+
         myform.submit(function(event){
         event.preventDefault();
         var params = myform.serializeArray().reduce(function(obj, item) {

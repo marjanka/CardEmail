@@ -4,6 +4,15 @@
 
     var card_info = [
         {
+            id: 13,
+            icon: 'assets/images/new-year.jpg',
+            title: { new_year: "Happy New Year!!!" },
+            text: 'Now, in the New Year, we look back upon warm memories. You’ve had a hand in every wonderfully warm memory I have, Mom. Happy New Year, Mom.',
+            author:'Cristian'
+        },
+
+        {
+
             id:1,
             icon:'assets/images/happy_birthday.jpg',
             title: { birthday:"Happy Birthday!!!" },

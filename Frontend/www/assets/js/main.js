@@ -5,6 +5,15 @@
 
     var card_info = [
         {
+            id: 13,
+            icon: 'assets/images/new-year.jpg',
+            title: { new_year: "Happy New Year!!!" },
+            text: 'Now, in the New Year, we look back upon warm memories. You’ve had a hand in every wonderfully warm memory I have, Mom. Happy New Year, Mom.',
+            author:'Cristian'
+        },
+
+        {
+
             id:1,
             icon:'assets/images/happy_birthday.jpg',
             title: { birthday:"Happy Birthday!!!" },
@@ -165,23 +174,12 @@
     });
 
     $(".send-email").on('click', function () {
-      //  alert("bla");
+        $(".card-preview").hide();
+        $(".card-container").hide();
+        $("#myform").show();
         var imageData = getCanvas.toDataURL("image/png");
-        console.log(imageData);
-     // $(".send_image").value = imageData;
-       // document.getElementById("send_image").innerHTML = imageData;
-       // if (!getElementById("send_image")){
-       //     alert("loh");
-      //  }
-       // getElementById("send_image").value = imageData;
-       // var bla = getElementById("send_image").value;
-      //  alert("bla");
-    //var element1 = $(".send_image").val();
-    //console.log(element1 );
-    //alert("bla");
-    //var $myform = $(myform);
-       // $myform.find("#send_image").text(imageData);
-       // alert($myform.find("input#send_image").text(imageData));
+      $("input#send_image:text").val(imageData);
+
         myform.submit(function(event){
         event.preventDefault();
         var params = myform.serializeArray().reduce(function(obj, item) {
@@ -206,135 +204,135 @@
 
 
 },{"../templates":7,"./storage":5}],3:[function(require,module,exports){
-    /**
-     * Created by Marjana on 12/11/2016.
-     */
-    var templates = require('../templates');
-    var cardList = require('../cardList');
+        /**
+         * Created by Marjana on 12/11/2016.
+         */
+        var templates = require('../templates');
+        var cardList = require('../cardList');
 
-    var $examples_list = $(".example");
+        var $examples_list = $(".example");
 
-    function showExamplesList(list) {
-        $examples_list.html("");
+        function showExamplesList(list) {
+            $examples_list.html("");
 
-        function showOneExample(card) {
-            var html_code = templates.examples_OneItem({card: card});
-            var $node = $(html_code);
-            $examples_list.append($node);
-        }
-        list.forEach(showOneExample);
-    }
-
-    function initialiseMenu() {
-        showExamplesList(cardList)
-    }
-
-    exports.initialiseMenu = initialiseMenu;
-
-    $.fn.pageMe = function(opts){
-        var $this = this,
-            defaults = {
-                perPage: 6,
-                showPrevNext: false,
-                hidePageNumbers: false
-            },
-            settings = $.extend(defaults, opts);
-
-        var listElement = $this;
-        var perPage = settings.perPage;
-        var children = listElement.children();
-        var pager = $('.pager');
-
-        if (typeof settings.childSelector!="undefined") {
-            children = listElement.find(settings.childSelector);
-        }
-
-        if (typeof settings.pagerSelector!="undefined") {
-            pager = $(settings.pagerSelector);
-        }
-
-        var numItems = children.size();
-        var numPages = Math.ceil(numItems/perPage);
-
-        pager.data("curr",0);
-
-        if (settings.showPrevNext){
-            $('<li><a href="#" class="prev_link">«</a></li>').appendTo(pager);
-        }
-
-        var curr = 0;
-        while(numPages > curr && (settings.hidePageNumbers==false)){
-            $('<li><a href="#" class="page_link">'+(curr+1)+'</a></li>').appendTo(pager);
-            curr++;
-        }
-
-        if (settings.showPrevNext){
-            $('<li><a href="#" class="next_link">»</a></li>').appendTo(pager);
-        }
-
-        pager.find('.page_link:first').addClass('active');
-        pager.find('.prev_link').hide();
-        if (numPages<=1) {
-            pager.find('.next_link').hide();
-        }
-        pager.children().eq(1).addClass("active");
-
-        children.hide();
-        children.slice(0, perPage).show();
-
-        pager.find('li .page_link').click(function(){
-            var clickedPage = $(this).html().valueOf()-1;
-            goTo(clickedPage,perPage);
-            return false;
-        });
-        pager.find('li .prev_link').click(function(){
-            previous();
-            return false;
-        });
-        pager.find('li .next_link').click(function(){
-            next();
-            return false;
-        });
-
-        function previous(){
-            var goToPage = parseInt(pager.data("curr")) - 1;
-            goTo(goToPage);
-        }
-
-        function next(){
-            goToPage = parseInt(pager.data("curr")) + 1;
-            goTo(goToPage);
-        }
-
-        function goTo(page){
-            var startAt = page * perPage,
-                endOn = startAt + perPage;
-
-            children.css('display','none').slice(startAt, endOn).show();
-
-            if (page>=1) {
-                pager.find('.prev_link').show();
+            function showOneExample(card) {
+                var html_code = templates.examples_OneItem({card: card});
+                var $node = $(html_code);
+                $examples_list.append($node);
             }
-            else {
-                pager.find('.prev_link').hide();
+            list.forEach(showOneExample);
+        }
+
+        function initialiseMenu() {
+            showExamplesList(cardList)
+        }
+
+        exports.initialiseMenu = initialiseMenu;
+
+        $.fn.pageMe = function(opts){
+            var $this = this,
+                defaults = {
+                    perPage: 6,
+                    showPrevNext: false,
+                    hidePageNumbers: false
+                },
+                settings = $.extend(defaults, opts);
+
+            var listElement = $this;
+            var perPage = settings.perPage;
+            var children = listElement.children();
+            var pager = $('.pager');
+
+            if (typeof settings.childSelector!="undefined") {
+                children = listElement.find(settings.childSelector);
             }
 
-            if (page<(numPages-1)) {
-                pager.find('.next_link').show();
+            if (typeof settings.pagerSelector!="undefined") {
+                pager = $(settings.pagerSelector);
             }
-            else {
+
+            var numItems = children.size();
+            var numPages = Math.ceil(numItems/perPage);
+
+            pager.data("curr",0);
+
+            if (settings.showPrevNext){
+                $('<li><a href="#" class="prev_link">«</a></li>').appendTo(pager);
+            }
+
+            var curr = 0;
+            while(numPages > curr && (settings.hidePageNumbers==false)){
+                $('<li><a href="#" class="page_link">'+(curr+1)+'</a></li>').appendTo(pager);
+                curr++;
+            }
+
+            if (settings.showPrevNext){
+                $('<li><a href="#" class="next_link">»</a></li>').appendTo(pager);
+            }
+
+            pager.find('.page_link:first').addClass('active');
+            pager.find('.prev_link').hide();
+            if (numPages<=1) {
                 pager.find('.next_link').hide();
             }
+            pager.children().eq(1).addClass("active");
 
-            pager.data("curr",page);
-            pager.children().removeClass("active");
-            pager.children().eq(page+1).addClass("active");
+            children.hide();
+            children.slice(0, perPage).show();
 
-        }
-    };
-    $(document).ready(function(){
-        $examples_list.pageMe({pagerSelector:'#examples_pager',showPrevNext:true,hidePageNumbers:false,perPage:6});
-    });
+            pager.find('li .page_link').click(function(){
+                var clickedPage = $(this).html().valueOf()-1;
+                goTo(clickedPage,perPage);
+                return false;
+            });
+            pager.find('li .prev_link').click(function(){
+                previous();
+                return false;
+            });
+            pager.find('li .next_link').click(function(){
+                next();
+                return false;
+            });
+
+            function previous(){
+                var goToPage = parseInt(pager.data("curr")) - 1;
+                goTo(goToPage);
+            }
+
+            function next(){
+                goToPage = parseInt(pager.data("curr")) + 1;
+                goTo(goToPage);
+            }
+
+            function goTo(page){
+                var startAt = page * perPage,
+                    endOn = startAt + perPage;
+
+                children.css('display','none').slice(startAt, endOn).show();
+
+                if (page>=1) {
+                    pager.find('.prev_link').show();
+                }
+                else {
+                    pager.find('.prev_link').hide();
+                }
+
+                if (page<(numPages-1)) {
+                    pager.find('.next_link').show();
+                }
+                else {
+                    pager.find('.next_link').hide();
+                }
+
+                pager.data("curr",page);
+                pager.children().removeClass("active");
+                pager.children().eq(page+1).addClass("active");
+
+            }
+        };
+        $(document).ready(function(){
+            $examples_list.pageMe({pagerSelector:'#examples_pager',showPrevNext:true,hidePageNumbers:false,perPage:6});
+        });
 
 
 
