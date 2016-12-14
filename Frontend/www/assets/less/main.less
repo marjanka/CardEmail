@@ -1,114 +1,146 @@
-@import "card/card";
-@import "card/examples";
-@import "card/form";
+  @import "card/card";
+  @import "card/examples";
+  @import "card/form";
 
-//variables
-@mainColor:#5a5a5a;
-@padding:10%;
-@halfpad:@padding*0.5;
-@item-height: 500px;
+  //variables
+  @mainColor:#5a5a5a;
+  @padding:10%;
+  @halfpad:@padding*0.5;
+  @item-height: 500px;
+  @carousel_height: @item-height*0.9;
+  @panel:50%;
+  @text_color:#666;
 
-// functions
-
-
-//initialization
-body{
-  padding-bottom: @halfpad;
-  color: @mainColor;
-}
-//Navbar
-.navbar-wrapper {
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  z-index: 20;
-  .container {
-    padding-right: 0;
-    padding-left: 0;
+  // functions
+  .panel_size(@width, @height){
+    width: @width;
+    height: @height;
   }
-.navbar {
-  padding-right: 15px;
-  padding-left: 15px;
-.container {
-  width: auto;
-}
-}
-}
-.navbar-brand {
-  padding-top: 10px;
-}
-//Carousel
-#myCarousel {
-  height: @item-height*0.9;
-  margin-bottom: @halfpad*0.5;
-}
-.carousel{
-.item {
-  height: @item-height*0.9;
-  width:70%;
-  margin-left:16%;
-  background-color: #777;
-  img {
+  .panel_vision(){
+    margin: 20px auto;
+    margin-top: 95px;
+    background: #fff;
+    padding: 10px;
+    font-size: 20px;
+    color: @text_color;
+  }
+
+  //initialization
+  body{
+    padding-bottom: @halfpad;
+    color: @mainColor;
+  }
+  //Navbar
+  .navbar-wrapper {
     position: absolute;
     top: 0;
+    right: 0;
     left: 0;
-    min-width: 100%;
-    height: @item-height*0.9;
-  }
-}
-}
-
-.marketing .col-lg-4 {
-  margin-bottom: 20px;
-  text-align: center;
-}
-.marketing h2 {
-  font-weight: normal;
-}
-.marketing .lending p {
-  margin-top: 20px;
-  margin-right: 10px;
-  margin-left: 10px;
-}
-
-
-// Responsive CSS
-@media (min-width: 768px) {
-  .navbar-wrapper {
-    margin-top: 20px;
-
-.container {
+    z-index: 20;
+    .container {
+      padding-right: 0;
+      padding-left: 0;
+    }
+  .navbar {
     padding-right: 15px;
     padding-left: 15px;
+  .container {
+    width: auto;
   }
-  .navbar {
-   padding-right: 0;
-    padding-left: 0;
-    border-radius: 4px;
   }
-}
-  .carousel-caption p {
+  }
+  .navbar-brand {
+    padding-top: 10px;
+  }
+  //Carousel
+  #myCarousel {
+    height: @carousel_height;
+    margin-bottom: @halfpad*0.5;
+  }
+  .carousel{
+  .item {
+    height: @carousel_height;
+    width:70%;
+    margin-left:16%;
+    background-color: #777;
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      min-width: 100%;
+      height: @carousel_height;
+    }
+  }
+  }
+
+  .marketing{
+    .col-lg-4 {
     margin-bottom: 20px;
-    font-size: 21px;
-    line-height: 1.4;
+    text-align: center;
   }
-  .featurette-heading {
-    font-size: 50px;
+   h2 {
+    font-weight: normal;
   }
-}
-@media (max-width: 1000px) {
-  .carousel {
-    .item {
-    width: 100%;
-    margin-left: 0;
+   .lending p {
+    margin-top: 20px;
+    margin-right: 10px;
+    margin-left: 10px;
   }
-}
-}
-@media (min-width: 992px) {
-  .featurette-heading {
-    margin-top: 120px;
   }
-}
+  #new_img{
+    height: 210px;
+    max-width: 250px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+  }
+  #new_title{
+    font: 40px "Brush Script MT";
+  }
+  #new_text{
+    font: 16px "Lucida Calligraphy";
+  }
+  #new_author{
+    float: right;
+    font: 20px "Lucida Calligraphy";
+  }
+
+  // Responsive CSS
+  @media (min-width: 768px) {
+    .navbar-wrapper {
+      margin-top: 20px;
+
+  .container {
+      padding-right: 15px;
+      padding-left: 15px;
+    }
+    .navbar {
+     padding-right: 0;
+      padding-left: 0;
+      border-radius: 4px;
+    }
+  }
+    .carousel-caption p {
+      margin-bottom: 20px;
+      font-size: 21px;
+      line-height: 1.4;
+    }
+    .featurette-heading {
+      font-size: 50px;
+    }
+  }
+  @media (max-width: 1000px) {
+    .carousel {
+      .item {
+      width: 100%;
+      margin-left: 0;
+    }
+  }
+  }
+  @media (min-width: 992px) {
+    .featurette-heading {
+      margin-top: 120px;
+    }
+  }
 
 

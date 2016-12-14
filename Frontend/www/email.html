@@ -1,50 +1,50 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>CardEmail</title>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>CardEmail</title>
 
-    <!-- Bootsrap CSS-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <!-- Bootsrap CSS-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 
-    <!-- LESS основний файл-->
-    <link rel="stylesheet/less" type="text/css" href="assets/less/main.less" />
-    <!-- LESS JavaScript компілятор-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.5.3/less.min.js"></script>
-</head>
-<body style="background-color: #D4D4D2;">
+        <!-- LESS основний файл-->
+        <link rel="stylesheet/less" type="text/css" href="assets/less/main.less" />
+        <!-- LESS JavaScript компілятор-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.5.3/less.min.js"></script>
+    </head>
+    <body style="background-color: #D4D4D2;">
 
-<form id="myform" method="post">
-    <label>Who send the greeting card</label>
-    <input type="text" name="from_name" />
-    <label>Who get the greeting card</label>
-    <input type="text" name="to_name" />
-    <label>Email, where to send</label>
-    <input type="text" name="to_email" />
-    <label>Greeting card</label>
-    <input id="send_image" type="text" name="message" />
-    <br><br>
-    <button>
-        Send
-    </button>
-</form>
+    <form id="myform" method="post">
+        <label>Who send the greeting card</label>
+        <input type="text" name="from_name" />
+        <label>Who get the greeting card</label>
+        <input type="text" name="to_name" />
+        <label>Email, where to send</label>
+        <input type="text" name="to_email" />
+        <label>Greeting card</label>
+        <input id="send_image" type="text" name="message" />
+        <br><br>
+        <button>
+            Send
+        </button>
+    </form>
 
-</body>
-<!-- jQuery JavaScript-->
-<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"> </script>
+    </body>
+    <!-- jQuery JavaScript-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"> </script>
 
-<!--Bootsrap JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <!--Bootsrap JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js" ></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js" ></script>
 
-<script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
 
-<!--Own JavaScript-->
-<script type="text/javascript">
-    (function(){
-        emailjs.init("user_51jeCc7MogSy49usrQZJH");
-    })();
-</script>
-<script type="text/javascript"  src="assets/js/main.js"> </script>
-</html>
+    <!--Own JavaScript-->
+    <script type="text/javascript">
+        (function(){
+            emailjs.init("user_51jeCc7MogSy49usrQZJH");
+        })();
+    </script>
+    <script type="text/javascript"  src="assets/js/main.js"> </script>
+    </html>

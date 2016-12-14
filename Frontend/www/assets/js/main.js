@@ -1,366 +1,471 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-/**
- * Created by Marjana on 12/11/2016.
- */
+    /**
+     * Created by Marjana on 12/11/2016.
+     */
 
-var card_info = [
-    {
-        id:1,
-        icon:'assets/images/happy_birthday.jpg',
-        title: { birthday:"Happy Birthday!!!" },
-        text: 'On your special day, I wish you good luck. I hope this wonderful day will fill up your heart with joy and blessings. Have a fantastic birthday, celebrate the happiness on every day of your life. Happy Birthday!!!',
-        author:'Yours, Kate'
-    },
+    var card_info = [
+        {
+            id:1,
+            icon:'assets/images/happy_birthday.jpg',
+            title: { birthday:"Happy Birthday!!!" },
+            text: 'On your special day, I wish you good luck. I hope this wonderful day will fill up your heart with joy and blessings. Have a fantastic birthday, celebrate the happiness on every day of your life. Happy Birthday!!!',
+            author:'Yours, Kate'
+        },
 
-    {
-        id:4,
-        icon:'assets/images/merry_christmas.jpg',
-        title: { christmas:"Merry Christmas!" },
-        text: 'May your heart be filled with the joy of giving, as it is the expression of the love in your heart and the kindness in your soul.',
-        author:'Your friend, Joe'
-    },
+        {
+            id:4,
+            icon:'assets/images/merry_christmas.jpg',
+            title: { christmas:"Merry Christmas!" },
+            text: 'May your heart be filled with the joy of giving, as it is the expression of the love in your heart and the kindness in your soul.',
+            author:'Your friend, Joe'
+        },
 
-    {
-        id: 8,
-        icon: 'assets/images/new_year2.jpg',
-        title:  { new_year: "Happy New Year!!!" },
-        text: 'As we enter the New Year together, let’s resolve to appreciate the love we share and watch it grow even deeper. Happy New Year my love.',
-        author:'Linda'
-    },
+        {
+            id:12,
+            icon:'assets/images/mother.jpg',
+            title: { mother:"Happy Mother’s Day!" },
+            text: 'Mom, you’ve always been there for me. There’s no way I could ever fully express my gratitude for all you’ve done for me. I love you! Happy Mother’s Day.',
+            author:'Your, Mike'
+        },
 
-    {
-        id:5,
-        icon:'assets/images/merry_christmas2.jpg',
-        title: { christmas:"Merry Christmas!" },
-        text: 'Christmas is a time for nostalgia, but it is also a time for making new memories. Enjoy the fellowship of new friends, and cherish the company of family in this season of loving and sharing. Merry Christmas!',
-        author:'Yours, Lucy'
-    },
+        {
+            id: 8,
+            icon: 'assets/images/new_year2.jpg',
+            title:  { new_year: "Happy New Year!!!" },
+            text: 'As we enter the New Year together, let’s resolve to appreciate the love we share and watch it grow even deeper. Happy New Year my love.',
+            author:'Linda'
+        },
 
-    {
-        id:2,
-        icon:'assets/images/happy_birthday2.jpg',
-        title: { birthday:"Happy Birthday!!!" },
-        text: 'In this life, there are too many adventures and so little time to enjoy all of them. Not for you. You have always jumped in; head first, with so much fire and grit. Life’s an endless adventure with you beside me. Happy Birthday to a champion.',
-        author:'Derek'
-    },
+        {
+            id:5,
+            icon:'assets/images/merry_christmas2.jpg',
+            title: { christmas:"Merry Christmas!" },
+            text: 'Christmas is a time for nostalgia, but it is also a time for making new memories. Enjoy the fellowship of new friends, and cherish the company of family in this season of loving and sharing. Merry Christmas!',
+            author:'Yours, Lucy'
+        },
 
-    {
-        id:7,
-        icon:'assets/images/new_year1.jpg',
-        title: { new_year: "Happy New Year!!!" },
-        text: 'Now, in the New Year, we look back upon warm memories. You’ve had a hand in every wonderfully warm memory I have, Mom. Happy New Year, Mom.',
-        author:'Yous children, Joe and Marry'
-    },
+        {
+            id:11,
+            icon:'assets/images/mother2.jpeg',
+            title: { mother:"Happy Mother’s Day!" },
+            text: 'To a mom who’s thoughtful, loving, and kind, I’m so thankful for the ties that bind Our hearts together in tender love. Happy Mother’s Day–you’re a gift from above!',
+            author:'Love, Joe'
+        },
 
-    {
-        id: 9,
-        icon: 'assets/images/new_year3.jpg',
-        title: { new_year: "Happy New Year!!!" },
-        text: 'Counting my blessings and wishing you more. Hope you enjoy the New Year in store. Have a joyous New Year, my dear friend!',
-        author:'Cristian'
-    },
+        {
+            id:2,
+            icon:'assets/images/happy_birthday2.jpg',
+            title: { birthday:"Happy Birthday!!!" },
+            text: 'In this life, there are too many adventures and so little time to enjoy all of them. Not for you. You have always jumped in; head first, with so much fire and grit. Life’s an endless adventure with you beside me. Happy Birthday to a champion.',
+            author:'Derek'
+        },
 
-    {
-        id:6,
-        icon:'assets/images/merry_christmas3.jpg',
-        title: { christmas:"Merry Christmas!" },
-        text: 'A little smile. A word of cheer. A bit of love from someone near. A little gift from one held dear. Best wishes for the coming year. These make a Merry Christmas!',
-        author:'Love, Ann'
-    },
+        {
+            id:7,
+            icon:'assets/images/new_year1.jpg',
+            title: { new_year: "Happy New Year!!!" },
+            text: 'Now, in the New Year, we look back upon warm memories. You’ve had a hand in every wonderfully warm memory I have, Mom. Happy New Year, Mom.',
+            author:'Yous children, Joe and Marry'
+        },
 
-    {
-        id:3,
-        icon:'assets/images/happy_birthday3.jpg',
-        title: { birthday:"Happy Birthday!!!" },
-        text: 'I look forward to spending every birthday with you because you are a bundle of joy. Every single day, you amaze me at your ability to make the sun shine through every cloud. You deserve a big celebration, and I’m making it happen.',
-        author:'With love, Kate'
-    }
-];
+        {
+            id: 9,
+            icon: 'assets/images/new_year3.jpg',
+            title: { new_year: "Happy New Year!!!" },
+            text: 'Counting my blessings and wishing you more. Hope you enjoy the New Year in store. Have a joyous New Year, my dear friend!',
+            author:'Cristian'
+        },
 
+        {
+            id:6,
+            icon:'assets/images/merry_christmas3.jpg',
+            title: { christmas:"Merry Christmas!" },
+            text: 'A little smile. A word of cheer. A bit of love from someone near. A little gift from one held dear. Best wishes for the coming year. These make a Merry Christmas!',
+            author:'Love, Ann'
+        },
 
-module.exports = card_info;
-},{}],2:[function(require,module,exports){
-/**
- * Created by Marjana on 12/11/2016.
- */
+        {
+            id:10,
+            icon:'assets/images/mother3.jpg',
+            title: { mother:"Happy Mother’s Day!" },
+            text: 'A mom like you I could never replace. Your actions and words are full of such grace. You’re truly a treasure, so I’m writing to say I hope you have a lovely Mother’s Day! I love you, Mom!',
+            author:'From your child, Rose'
+        },
 
-$(function(){
-    //This code will execute when the page is ready
-    var showImages = require('./pizza/showImages');
-    var examples = require('./pizza/examples');
-    var cardList = require('./cardList');
-    var createCard = require('./pizza/createCard');
-    examples.initialiseMenu();
-    showImages.initialise();
-
-
-});
-},{"./cardList":1,"./pizza/createCard":3,"./pizza/examples":4,"./pizza/showImages":5}],3:[function(require,module,exports){
-/**
- * Created by Marjana on 12/12/2016.
- */
-var templates = require('../templates');
-var storage = require('./storage');
-
-var Card = [];
-var savedCart = storage.get('card');
-
-//HTML едемент куди будуть додаватися піци
-var $card = $(".right-panel");
-
-function creation(card) {
-
-        Card.push({
-            card: card
-        });
-    updateCart();
-}
-
-function initialiseCard() {
-    updateCart();
-}
-function updateCart() {
-     storage.set('card',Card);
-    $card.html("");
-    function showOnePizzaInCart(cart_item) {
-        var html_code = templates.createCard_ByYourself(cart_item);
-        var $node = $(html_code);
-        $card.append($node);
-    }
-    Card.forEach(showOnePizzaInCart);
-}
-exports.creation = creation;
-exports.initialiseCard = initialiseCard;
-
-var element = $(".right-panel"); // global variable
-var getCanvas; // global variable
-
-$('.left-panel input,textarea').each(function(){
-
-    $(this).bind('blur keypress', function() {
- $('#new_' + $(this).attr('id')).text($(this).val());
-    });
-});
-
-
-$(".preview").on('click', function () {
-    var can;
-    $(".previewImage").empty(can);
-    html2canvas(element, {
-        onrendered: function (canvas) {
-            can = canvas;
-            $(".previewImage").append(can);
-            getCanvas = canvas;
+        {
+            id:3,
+            icon:'assets/images/happy_birthday3.jpg',
+            title: { birthday:"Happy Birthday!!!" },
+            text: 'I look forward to spending every birthday with you because you are a bundle of joy. Every single day, you amaze me at your ability to make the sun shine through every cloud. You deserve a big celebration, and I’m making it happen.',
+            author:'With love, Kate'
         }
-    });
-    $(".card-preview").show();
-
-});
-var imageData1;
-$(".download").on('click', function () {
-    var imageData = getCanvas.toDataURL("image/png");
-    console.log(imageData);
-
-    // Now browser starts downloading it instead of just showing it
-    var newData = imageData.replace(/^data:image\/png/, "data:application/octet-stream");
-    $(".download").attr("download", "greeting_card.png").attr("href", newData);
-});
+    ];
 
 
-$(".send-email").on('click', function () {
-  //  alert("bla");
-    var imageData = getCanvas.toDataURL("image/png");
-    console.log(imageData);
+    module.exports = card_info;
+},{}],2:[function(require,module,exports){
+    /**
+     * Created by Marjana on 12/12/2016.
+     */
+    var templates = require('../templates');
+    var storage = require('./storage');
 
- // $(".send_image").value = imageData;
-   // document.getElementById("send_image").innerHTML = imageData;
-   // if (!getElementById("send_image")){
-   //     alert("loh");
-  //  }
-   // getElementById("send_image").value = imageData;
-   // var bla = getElementById("send_image").value;
-  //  alert("bla");
+    var Card = [];
+    var $card = $(".right-panel");
+    var element = $(".right-panel");
+    var getCanvas;
+    var myform = $("form#myform");
 
-
-//var element1 = $(".send_image").val();
-//console.log(element1 );
-alert("bla");
-var myform = $("form#myform");
-var $myform = $(myform);
-    $myform.find("input#send_image").val(imageData);
-   // alert($myform.find("input#send_image").text(imageData));
-    myform.submit(function(event){
-    event.preventDefault();
-
-    var params = myform.serializeArray().reduce(function(obj, item) {
-        obj[item.name] = item.value;
-        return obj;
-        console.log(obj);
-    }, {});
-
-    // Change to your service ID, or keep using the default service
-    var service_id = "default_service";
-
-    var template_id = "cardemail";
-    myform.find("button").text("Sending...");
-    emailjs.send(service_id,template_id,params)
-        .then(function(){
-            alert("Email send!");
-            window.location.replace('card.html');
-        }, function(err) {
-            alert("Send email failed!\r\n You write a wrong name or email address.\n Try again ");
-            myform.find("button").text("Send");
-        });
-    return false;
-});
-
-});
-},{"../templates":7,"./storage":6}],4:[function(require,module,exports){
-/**
- * Created by Marjana on 12/11/2016.
- */
-
-
-var templates = require('../templates');
-var cardList = require('../cardList');
-
-var $examples_list = $(".example");
-
-function showExamplesList(list) {
-    $examples_list.html("");
-
-
-    function showOneExample(card) {
-        var html_code = templates.examples_OneItem({card: card});
-
-        var $node = $(html_code);
-
-        $examples_list.append($node);
+    function creation(card) {
+            Card.push({
+                card: card
+            });
+        initialiseCard();
     }
 
-    list.forEach(showOneExample);
-}
+    function initialiseCard() {
+        storage.set('card',Card);
+        $card.html("");
+        function showChosenCard(card) {
+            var html_code = templates.createCard_ByYourself(card);
+            var $node = $(html_code);
+            $card.append($node);
+        }
+        Card.forEach(showChosenCard);
+    }
 
-function filterExamples(filter) {
+    exports.creation = creation;
+    exports.initialiseCard = initialiseCard;
 
-    var card_shown = [];
+    $('.left-panel input,textarea').each(function(){
+        $(this).bind('blur keypress', function() {
+     $('#new_' + $(this).attr('id')).text($(this).val());
+        });
+    });
 
-    cardList.forEach(function(card){
-        // pizza_shown.push(pizza);
+    $(".preview").on('click', function () {
+        var can;
+        $(".previewImage").empty(can);
+        html2canvas(element, {
+            onrendered: function (canvas) {
+                can = canvas;
+                $(".previewImage").append(can);
+                getCanvas = canvas;
+            }
+        });
+        $(".card-preview").show();
+    });
 
+    //var imageData1;
+    $(".download").on('click', function () {
+        var imageData = getCanvas.toDataURL("image/png");
+        console.log(imageData);
+        var newData = imageData.replace(/^data:image\/png/, "data:application/octet-stream");
+        $(".download").attr("download", "greeting_card.png").attr("href", newData);
+    });
+
+    $(".send-email").on('click', function () {
+      //  alert("bla");
+        var imageData = getCanvas.toDataURL("image/png");
+        console.log(imageData);
+     // $(".send_image").value = imageData;
+       // document.getElementById("send_image").innerHTML = imageData;
+       // if (!getElementById("send_image")){
+       //     alert("loh");
+      //  }
+       // getElementById("send_image").value = imageData;
+       // var bla = getElementById("send_image").value;
+      //  alert("bla");
+    //var element1 = $(".send_image").val();
+    //console.log(element1 );
+    //alert("bla");
+    //var $myform = $(myform);
+       // $myform.find("#send_image").text(imageData);
+       // alert($myform.find("input#send_image").text(imageData));
+        myform.submit(function(event){
+        event.preventDefault();
+        var params = myform.serializeArray().reduce(function(obj, item) {
+            obj[item.name] = item.value;
+            return obj;
+            console.log(obj);
+        }, {});
+        var service_id = "default_service";
+        var template_id = "cardemail";
+        myform.find("button").text("Sending...");
+        emailjs.send(service_id,template_id,params)
+            .then(function(){
+                alert("Email send!");
+                window.location.replace('card.html');
+            }, function(err) {
+                alert("Send email failed!\r\n You write a wrong name or email address.\n Try again ");
+                myform.find("button").text("Send");
+            });
+        return false;
+    });
     });
 
 
-    showExamplesList(card_shown);
-}
+},{"../templates":7,"./storage":5}],3:[function(require,module,exports){
+    /**
+     * Created by Marjana on 12/11/2016.
+     */
+    var templates = require('../templates');
+    var cardList = require('../cardList');
 
-function initialiseMenu() {
-    showExamplesList(cardList)
-}
+    var $examples_list = $(".example");
 
-exports.filterExamples = filterExamples;
-exports.initialiseMenu = initialiseMenu;
-},{"../cardList":1,"../templates":7}],5:[function(require,module,exports){
-/**
- * Created by Marjana on 12/11/2016.
- */
+    function showExamplesList(list) {
+        $examples_list.html("");
 
-var templates = require('../templates');
-var cardList = require('../cardList');
-var createCard = require('./createCard');
+        function showOneExample(card) {
+            var html_code = templates.examples_OneItem({card: card});
+            var $node = $(html_code);
+            $examples_list.append($node);
+        }
+        list.forEach(showOneExample);
+    }
 
-var $choose_image = $("#choose-image");
-var filter= {
-    birthday: 0,
-    christmas: 1,
-    new_year: 2
-}
-function showImagesList(list) {
-    $choose_image.html("");
-    function showOneImage(card) {
-        var html_image = templates.showImages_OneItem({card: card});
-        var $node_image = $(html_image);
+    function initialiseMenu() {
+        showExamplesList(cardList)
+    }
 
-        $node_image.find(".chosen_image_for_card").click(function(){
-            $(".choose-image").hide();
-            createCard.creation(card);
-            $(".card-container").show();
+    exports.initialiseMenu = initialiseMenu;
+
+    $.fn.pageMe = function(opts){
+        var $this = this,
+            defaults = {
+                perPage: 6,
+                showPrevNext: false,
+                hidePageNumbers: false
+            },
+            settings = $.extend(defaults, opts);
+
+        var listElement = $this;
+        var perPage = settings.perPage;
+        var children = listElement.children();
+        var pager = $('.pager');
+
+        if (typeof settings.childSelector!="undefined") {
+            children = listElement.find(settings.childSelector);
+        }
+
+        if (typeof settings.pagerSelector!="undefined") {
+            pager = $(settings.pagerSelector);
+        }
+
+        var numItems = children.size();
+        var numPages = Math.ceil(numItems/perPage);
+
+        pager.data("curr",0);
+
+        if (settings.showPrevNext){
+            $('<li><a href="#" class="prev_link">«</a></li>').appendTo(pager);
+        }
+
+        var curr = 0;
+        while(numPages > curr && (settings.hidePageNumbers==false)){
+            $('<li><a href="#" class="page_link">'+(curr+1)+'</a></li>').appendTo(pager);
+            curr++;
+        }
+
+        if (settings.showPrevNext){
+            $('<li><a href="#" class="next_link">»</a></li>').appendTo(pager);
+        }
+
+        pager.find('.page_link:first').addClass('active');
+        pager.find('.prev_link').hide();
+        if (numPages<=1) {
+            pager.find('.next_link').hide();
+        }
+        pager.children().eq(1).addClass("active");
+
+        children.hide();
+        children.slice(0, perPage).show();
+
+        pager.find('li .page_link').click(function(){
+            var clickedPage = $(this).html().valueOf()-1;
+            goTo(clickedPage,perPage);
+            return false;
+        });
+        pager.find('li .prev_link').click(function(){
+            previous();
+            return false;
+        });
+        pager.find('li .next_link').click(function(){
+            next();
+            return false;
         });
 
-        $choose_image.append($node_image);
+        function previous(){
+            var goToPage = parseInt(pager.data("curr")) - 1;
+            goTo(goToPage);
+        }
+
+        function next(){
+            goToPage = parseInt(pager.data("curr")) + 1;
+            goTo(goToPage);
+        }
+
+        function goTo(page){
+            var startAt = page * perPage,
+                endOn = startAt + perPage;
+
+            children.css('display','none').slice(startAt, endOn).show();
+
+            if (page>=1) {
+                pager.find('.prev_link').show();
+            }
+            else {
+                pager.find('.prev_link').hide();
+            }
+
+            if (page<(numPages-1)) {
+                pager.find('.next_link').show();
+            }
+            else {
+                pager.find('.next_link').hide();
+            }
+
+            pager.data("curr",page);
+            pager.children().removeClass("active");
+            pager.children().eq(page+1).addClass("active");
+
+        }
+    };
+    $(document).ready(function(){
+        $examples_list.pageMe({pagerSelector:'#examples_pager',showPrevNext:true,hidePageNumbers:false,perPage:6});
+    });
+
+
+
+
+
+},{"../cardList":1,"../templates":7}],4:[function(require,module,exports){
+    /**
+     * Created by Marjana on 12/11/2016.
+     */
+
+    var templates = require('../templates');
+    var cardList = require('../cardList');
+    var createCard = require('./createCard');
+
+    var $choose_image = $("#choose-image");
+    var filter= {
+        birthday: 0,
+        christmas: 1,
+        new_year: 2,
+        mother: 3
     }
-    list.forEach(showOneImage);
-}
+    function showImagesList(list) {
+        $choose_image.html("");
+        function showOneImage(card) {
+            var html_image = templates.showImages_OneItem({card: card});
+            var $node_image = $(html_image);
 
-function filterImages(filter) {
-    var examples_shown = [];
-    cardList.forEach(function(card){
-        if(filter == 0){
-            if(card.title.birthday) {
-                examples_shown.push(card);
-            }}
-        else if(filter == 1){
-            if(card.title.christmas) {
-                examples_shown.push(card);
-            }}
-        else if(filter == 2){
-            if(card.title.new_year) {
-                examples_shown.push(card);
-            }}
-    });
-    showImagesList(examples_shown);
-}
+            $node_image.find(".chosen_image_for_card").click(function(){
+                $(".choose-image").hide();
+                createCard.creation(card);
+                $(".card-container").show();
+            });
+            $choose_image.append($node_image);
+        }
+        list.forEach(showOneImage);
+    }
 
-function addFilters() {
+    function filterImages(filter) {
+        var examples_shown = [];
+        cardList.forEach(function(card){
+            if(filter == 0){
+                if(card.title.birthday) {
+                    examples_shown.push(card);
+                }}
+            else if(filter == 1){
+                if(card.title.christmas) {
+                    examples_shown.push(card);
+                }}
+            else if(filter == 2){
+                if(card.title.new_year) {
+                    examples_shown.push(card);
+                }}
+            else if(filter == 3){
+                if(card.title.mother) {
+                    examples_shown.push(card);
+                }}
+        });
+        showImagesList(examples_shown);
+    }
 
-    $("#filter-birthday").click(function (e) {
-        filterImages(filter.birthday);
-    });
-    $("#filter-christmas").click(function (e) {
-        filterImages(filter.christmas);
-    });
-    $("#filter-new_year").click(function (e) {
-        filterImages(filter.new_year);
-    });
-    $("#filter-all").click(function (e) {
+    function addFilters() {
+
+        $("#filter-birthday").click(function (e) {
+            filterImages(filter.birthday);
+        });
+        $("#filter-christmas").click(function (e) {
+            filterImages(filter.christmas);
+        });
+        $("#filter-new_year").click(function (e) {
+            filterImages(filter.new_year);
+        });
+        $("#filter-mother").click(function (e) {
+            filterImages(filter.mother);
+        });
+        $("#filter-all").click(function (e) {
+            showImagesList(cardList);
+        });
+    }
+
+    function initialise() {
         showImagesList(cardList);
+        addFilters();
+    }
+
+    exports.filterImages = filterImages;
+    exports.initialise = initialise;
+
+    $(document).ready(function(){
+        $choose_image.pageMe({pagerSelector:'#image_pager',showPrevNext:true,hidePageNumbers:false,perPage:6});
     });
-}
-
-function initialise() {
-    showImagesList(cardList);
-    addFilters();
-}
-
-exports.filterImages = filterImages;
-exports.initialise = initialise;
 
 
-},{"../cardList":1,"../templates":7,"./createCard":3}],6:[function(require,module,exports){
-/**
- * Created by Marjana on 12/11/2016.
- */
 
-var basil = require('basil.js');
-basil = new basil();
-exports.get = function(key) {
-    return basil.get(key);
-};
-exports.set = function(key, value) {
-    return basil.set(key, value);
-};
-},{"basil.js":8}],7:[function(require,module,exports){
-/**
- * Created by Marjana on 12/11/2016.
- */
+},{"../cardList":1,"../templates":7,"./createCard":2}],5:[function(require,module,exports){
+    /**
+     * Created by Marjana on 12/11/2016.
+     */
 
+    var basil = require('basil.js');
+    basil = new basil();
+    exports.get = function(key) {
+        return basil.get(key);
+    };
+    exports.set = function(key, value) {
+        return basil.set(key, value);
+    };
+},{"basil.js":8}],6:[function(require,module,exports){
+    /**
+     * Created by Marjana on 12/11/2016.
+     */
 
-var ejs = require('ejs');
+    $(function(){
+        //This code will execute when the page is ready
+        var showImages = require('./card/showImages');
+        var examples = require('./card/examples');
+        var cardList = require('./cardList');
+        var createCard = require('./card/createCard');
+        examples.initialiseMenu();
+        showImages.initialise();
+        createCard.initialiseCard();
+    });
+},{"./card/createCard":2,"./card/examples":3,"./card/showImages":4,"./cardList":1}],7:[function(require,module,exports){
+    /**
+     * Created by Marjana on 12/11/2016.
+     */
+    
+    var ejs = require('ejs');
 
-
-exports.examples_OneItem = ejs.compile("<%\r\n\r\nfunction getTitlesArray(card) {\r\n    var content = card.title;\r\n    var result = [];\r\n\r\n    //Object.keys повертає масив ключів в об’єкті JavaScript\r\n\r\n    Object.keys(content).forEach(function(key){\r\n\r\n        //a.concat(b) створює спільний масив із масивів a та b\r\n        result = result.concat(content[key]);\r\n    });\r\n\r\n    return result;\r\n}\r\n\r\n%>\r\n<div class=\"col-sm-6 col-md-4 example\">\r\n    <p id=\"new_title\"> <%= getTitlesArray(card).join(\", \") %></p>\r\n    <p><img id=\"new_img\"  src= <%= card.icon %> </p>\r\n    <p id=\"new_text\"><%= card.text %></p>\r\n    <p id=\"new_author\"><%= card.author %></p>\r\n</div>\r\n\r\n\r\n");
-exports.createCard_ByYourself = ejs.compile("<%\r\nfunction getTitlesArray(card) {\r\n    var content = card.title;\r\n    var result = [];\r\n    //Object.keys повертає масив ключів в об’єкті JavaScript\r\n    Object.keys(content).forEach(function(key){\r\n        //a.concat(b) створює спільний масив із масивів a та b\r\n        result = result.concat(content[key]);\r\n    });\r\n    return result;\r\n}\r\n%>\r\n\r\n\r\n<div>\r\n    <p id=\"new_title\"> <%= getTitlesArray(card).join(\", \") %></p>\r\n    <p><img id=\"new_img\"  src= <%= card.icon %> </p>\r\n    <p id=\"new_text\"><%= card.text %></p>\r\n    <p id=\"new_author\"><%= card.author %></p>\r\n</div>");
-exports.showImages_OneItem = ejs.compile("<div class=\"col-sm-6 col-md-4 image_for_card\">\r\n    <p><img id=\"new_img\" src= <%= card.icon %> </p>\r\n        <input class=\"chosen_image_for_card btn btn-danger\" id=\"chosen_image_for_card\" type=\"button\" value=\"Ok\"/>\r\n</div>");
+    exports.examples_OneItem = ejs.compile("    <%\r\n    function getTitlesArray(card) {\r\n        var content = card.title;\r\n        var result = [];\r\n        //Object.keys повертає масив ключів в об’єкті JavaScript\r\n        Object.keys(content).forEach(function(key){\r\n\r\n            //a.concat(b) створює спільний масив із масивів a та b\r\n            result = result.concat(content[key]);\r\n        });\r\n        return result;\r\n    }\r\n    %>\r\n\r\n    <div class=\"col-sm-6 col-md-4 example\">\r\n        <p id=\"new_title\"> <%= getTitlesArray(card).join(\", \") %></p>\r\n        <p><img id=\"new_img\"  src= <%= card.icon %> </p>\r\n        <p id=\"new_text\"><%= card.text %></p>\r\n        <p id=\"new_author\"><%= card.author %></p>\r\n    </div>\r\n\r\n\r\n");
+    exports.createCard_ByYourself = ejs.compile("    <%\r\n    function getTitlesArray(card) {\r\n        var content = card.title;\r\n        var result = [];\r\n        //Object.keys повертає масив ключів в об’єкті JavaScript\r\n        Object.keys(content).forEach(function(key){\r\n            //a.concat(b) створює спільний масив із масивів a та b\r\n            result = result.concat(content[key]);\r\n        });\r\n        return result;\r\n    }\r\n    %>\r\n\r\n    <div>\r\n        <p id=\"new_title\"> <%= getTitlesArray(card).join(\", \") %></p>\r\n        <p><img id=\"new_img\"  src= <%= card.icon %> </p>\r\n        <p id=\"new_text\"><%= card.text %></p>\r\n        <p id=\"new_author\"><%= card.author %></p>\r\n    </div>");
+    exports.showImages_OneItem = ejs.compile("    <div class=\"col-sm-6 col-md-4 image_for_card\">\r\n        <p><img id=\"new_img\" src= <%= card.icon %> </p>\r\n            <input class=\"chosen_image_for_card btn btn-danger\" id=\"chosen_image_for_card\" type=\"button\" value=\"Ok\"/>\r\n    </div>");
 
 },{"ejs":9}],8:[function(require,module,exports){
 (function () {
@@ -2209,4 +2314,4 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
-},{}]},{},[2]);
+},{}]},{},[6]);

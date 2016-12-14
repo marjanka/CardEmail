@@ -1,35 +1,60 @@
-.example-container{
-  width: @panel*2;
-  height: @item-height*3.2;
-  margin: 20px auto;
-  margin-top:95px;
-  background: #fff;
-  padding: 10px;
-  font-size: 20px;
-  color: #666;
-}
-.example{
-  margin-bottom: @halfpad;
-  height: @item-height*1,2;
-  border: 1px dotted #D1D0CE;
-  #new_text{
-    height: 150px;
+  .example-container{
+    .panel_size(@panel*1.6, @item-height*2.5);
+    .panel_vision();
+  .example{
+    margin-bottom: @halfpad;
+    height: @item-height;
+    border: 1px dotted #D1D0CE;
+    #new_text{
+      height: 150px;
+    }
   }
-}
-#new_img{
-  height: 210px;
-  max-width: 250px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto
-}
-#new_title{
-  font: 40px "Brush Script MT";
-}
-#new_text{
-  font: 16px "Lucida Calligraphy";
-}
-#new_author{
-  float: right;
-  font: 20px "Lucida Calligraphy";
-}
+  }
+
+  #examples_pager, #image_pager {
+    .active a {
+      background-color: lightpink;
+      color: #282828;
+      border: 0px;
+    }
+    a {
+      //background-color :lightpink;
+      color: @mainColor;
+      border: 0px;
+    }
+  }
+  // Responsive CSS
+  @media (max-width: 1175px) {
+    .example-container {
+      height: @item-height*3;
+      .example {
+        height: @item-height*1.3;
+        #new_text{
+          height: 250px;
+        }
+      }
+      }
+  }
+  @media (max-width: 990px) {
+    .example-container {
+      height: @item-height*4.1;
+      .example {
+        height: @item-height*1.2;
+        #new_text{
+          height: 210px;
+        }
+      }
+    }
+  }
+  @media (max-width: 770px) {
+    .example-container {
+      margin-top: 200px;
+      height: @item-height*8;
+      .example {
+        height: @item-height*1.3;
+        #new_text {
+          height: 250px;
+        }
+      }
+    }
+  }
