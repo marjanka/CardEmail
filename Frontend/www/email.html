@@ -14,7 +14,7 @@
     </head>
     <body style="background-color: #D4D4D2;">
 
-    <form id="myform" method="post">
+    <form id="tester" method="post">
         <label>Who send the greeting card</label>
         <input type="text" name="from_name" />
         <label>Who get the greeting card</label>
@@ -22,7 +22,7 @@
         <label>Email, where to send</label>
         <input type="text" name="to_email" />
         <label>Greeting card</label>
-        <input id="send_image" type="text" name="message" />
+        <input type="text" name="message" />
         <br><br>
         <button>
             Send
@@ -45,6 +45,27 @@
         (function(){
             emailjs.init("user_51jeCc7MogSy49usrQZJH");
         })();
+
+        var myform = $("form#tester");
+        myform.submit(function(event){
+            event.preventDefault();
+            var params = myform.serializeArray().reduce(function(obj, item) {
+                obj[item.name] = item.value;
+                return obj;
+                console.log(obj);
+            }, {});
+            var service_id = "default_service";
+            var template_id = "cardemail";
+            myform.find("button").text("Sending...");
+            emailjs.send(service_id,template_id,params)
+                    .then(function(){
+                        alert("Email send!");
+                       // window.location.replace('card.html');
+                    }, function(err) {
+                        alert("Send email failed!\r\n You write a wrong data.\n Try again ");
+                        myform.find("button").text("Send");
+                    });
+            return false;
+        });
     </script>
-    <script type="text/javascript"  src="assets/js/main.js"> </script>
     </html>

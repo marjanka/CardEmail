@@ -177,8 +177,12 @@
         $(".card-preview").hide();
         $(".card-container").hide();
         $("#myform").show();
-        var imageData = getCanvas.toDataURL("image/png");
-      $("input#send_image:text").val(imageData);
+
+        var template = $(".right-panel").html();
+      var send_card =$("#send_image").html(template);
+
+      //  var imageData = getCanvas.toDataURL("image/png", 0.1);
+      //$("input#send_image").val(imageData);
 
         myform.submit(function(event){
         event.preventDefault();
@@ -195,7 +199,7 @@
                 alert("Email send!");
                 window.location.replace('card.html');
             }, function(err) {
-                alert("Send email failed!\r\n You write a wrong name or email address.\n Try again ");
+                alert("Send email failed!\r\n You write a wrong data.\n Try again ");
                 myform.find("button").text("Send");
             });
         return false;
@@ -462,7 +466,7 @@
     var ejs = require('ejs');
 
     exports.examples_OneItem = ejs.compile("    <%\r\n    function getTitlesArray(card) {\r\n        var content = card.title;\r\n        var result = [];\r\n        //Object.keys повертає масив ключів в об’єкті JavaScript\r\n        Object.keys(content).forEach(function(key){\r\n\r\n            //a.concat(b) створює спільний масив із масивів a та b\r\n            result = result.concat(content[key]);\r\n        });\r\n        return result;\r\n    }\r\n    %>\r\n\r\n    <div class=\"col-sm-6 col-md-4 example\">\r\n        <p id=\"new_title\"> <%= getTitlesArray(card).join(\", \") %></p>\r\n        <p><img id=\"new_img\"  src= <%= card.icon %> </p>\r\n        <p id=\"new_text\"><%= card.text %></p>\r\n        <p id=\"new_author\"><%= card.author %></p>\r\n    </div>\r\n\r\n\r\n");
-    exports.createCard_ByYourself = ejs.compile("    <%\r\n    function getTitlesArray(card) {\r\n        var content = card.title;\r\n        var result = [];\r\n        //Object.keys повертає масив ключів в об’єкті JavaScript\r\n        Object.keys(content).forEach(function(key){\r\n            //a.concat(b) створює спільний масив із масивів a та b\r\n            result = result.concat(content[key]);\r\n        });\r\n        return result;\r\n    }\r\n    %>\r\n\r\n    <div>\r\n        <p id=\"new_title\"> <%= getTitlesArray(card).join(\", \") %></p>\r\n        <p><img id=\"new_img\"  src= <%= card.icon %> </p>\r\n        <p id=\"new_text\"><%= card.text %></p>\r\n        <p id=\"new_author\"><%= card.author %></p>\r\n    </div>");
+    exports.createCard_ByYourself = ejs.compile("    <%\r\n    function getTitlesArray(card) {\r\n        var content = card.title;\r\n        var result = [];\r\n        //Object.keys повертає масив ключів в об’єкті JavaScript\r\n        Object.keys(content).forEach(function(key){\r\n            //a.concat(b) створює спільний масив із масивів a та b\r\n            result = result.concat(content[key]);\r\n        });\r\n        return result;\r\n    }\r\n    %>\r\n\r\n    <div>\r\n        <p id=\"new_title\"> <%= getTitlesArray(card).join(\", \") %></p>\r\n        <p><img id=\"new_img\"  src= <%= card.icon %> /></p>\r\n        <p id=\"new_text\"><%= card.text %></p>\r\n        <p id=\"new_author\"><%= card.author %></p>\r\n    </div>");
     exports.showImages_OneItem = ejs.compile("    <div class=\"col-sm-6 col-md-4 image_for_card\">\r\n        <p><img id=\"new_img\" src= <%= card.icon %> </p>\r\n            <input class=\"chosen_image_for_card btn btn-danger\" id=\"chosen_image_for_card\" type=\"button\" value=\"Ok\"/>\r\n    </div>");
 
 },{"ejs":9}],8:[function(require,module,exports){

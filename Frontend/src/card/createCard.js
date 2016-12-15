@@ -62,8 +62,12 @@
         $(".card-preview").hide();
         $(".card-container").hide();
         $("#myform").show();
-        var imageData = getCanvas.toDataURL("image/png");
-      $("input#send_image:text").val(imageData);
+
+        var template = $(".right-panel").html();
+      var send_card =$("#send_image").html(template);
+
+      //  var imageData = getCanvas.toDataURL("image/png", 0.1);
+      //$("input#send_image").val(imageData);
 
         myform.submit(function(event){
         event.preventDefault();
@@ -80,7 +84,7 @@
                 alert("Email send!");
                 window.location.replace('card.html');
             }, function(err) {
-                alert("Send email failed!\r\n You write a wrong name or email address.\n Try again ");
+                alert("Send email failed!\r\n You write a wrong data.\n Try again ");
                 myform.find("button").text("Send");
             });
         return false;
